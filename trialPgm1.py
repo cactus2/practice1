@@ -38,7 +38,6 @@ def calcYourgrade(grades):
             score = -1
             print 'Invalid input - aborting'
     avgScore = score / numGrades
-    print avgScore    #just for debugging
     return(avgScore)
 
 def reportGrade(ascore):
@@ -57,13 +56,11 @@ def reportGrade(ascore):
     else:
         letterGrade = 'F'
         print "You're not meeting expectations, in fact you have an",letterGrade,'.'
-        print "I guess you weren't so luck after all, eh punk?  Next time why don't ya study?"
     return(letterGrade)
 
 # Mainline code
 
 youR = whoRU()
-print "So",youR,"are ya feelin lucky today?  Huh punk?"
 gradestr = genGrades()
 yourAvg = calcYourgrade(gradestr)
 yourGrade = reportGrade(yourAvg)
