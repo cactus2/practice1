@@ -1,7 +1,7 @@
 # First program of the practice1 repository. 
 # I'll clone this down to my pc, and then 
 # code something up.  Finally, I'll try
-# push and pull in back up to practice1.
+# push and pull it back up to practice1.
 
 def whoRU():
     you = raw_input("Tell me your name\n")
@@ -9,7 +9,10 @@ def whoRU():
     return(you)
 
 def genGrades():
-    gradSeq = 'fddfffdddffffff'
+# need to develop this to open and read a file of grades
+# maybe later try to make it read records of grades found by name
+#of student
+    gradSeq = 'ababacacabababa'
     return(gradSeq)
 
 def calcYourgrade(grades):
@@ -19,34 +22,48 @@ def calcYourgrade(grades):
     n = numGrades
     while n > 0:
         # taking the individual letters in the string (startgin from back)
-        # returning the ordinal values of the indiviudal letters
-        # converting the ordinal values so A = 10, B = 9, C = 8, D = 7, F = 5
+        # then assigning a grade point based on the letter grade
         n = n - 1
-        score = score + (11-(ord(grades[n])-96)) 
+        if grades[n] == 'a':
+            score = score + 4
+        elif grades[n] == 'b':
+            score = score + 3
+        elif grades[n] == 'c':
+            score = score + 2
+        elif grades[n] == 'd':
+            score = score + 1
+        elif grades[n] == 'f':
+            score = score + 0
+        else:
+            score = -1
+            print 'Invalid input - aborting'
     avgScore = score / numGrades
+    print avgScore    #just for debugging
     return(avgScore)
 
 def reportGrade(ascore):
-    if ascore > 9.3:
+    if ascore > 3.5:
         letterGrade = 'A'
         print "Splendid! You've earned an",letterGrade,"- keep it up!"
-    elif ascore > 8.3:
+    elif ascore > 2.5:
         letterGrade = 'B'
-        print 'Good, you earned a',letterGrade,'- maybe an A next time?'
-    elif ascore > 7.3:
+        print 'Good, you earned a',letterGrade,'- with some additional work you might have an A next time?'
+    elif ascore > 1.5:
         letterGrade = 'C'
         print 'You can passed with a',letterGrade,'but, did you give it your best?'
-    elif ascore >= 6:
+    elif ascore >= 0.5:
         letterGrade = 'D'
         print 'Hmmm, you have a',letterGrade,'even a gentleman does better.'
     else:
         letterGrade = 'F'
         print "You're not meeting expectations, in fact you have an",letterGrade,'.'
+        print "I guess you weren't so luck after all, eh punk?  Next time why don't ya study?"
     return(letterGrade)
 
 # Mainline code
 
 youR = whoRU()
+print "So",youR,"are ya feelin lucky today?  Huh punk?"
 gradestr = genGrades()
 yourAvg = calcYourgrade(gradestr)
 yourGrade = reportGrade(yourAvg)
